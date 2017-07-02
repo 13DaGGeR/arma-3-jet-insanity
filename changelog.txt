@@ -1,0 +1,27 @@
+0.1a
+	init
+0.2a
+	server fps counter(top left corner)
+0.3a 
+	random respawn place
+	respawn/rearm timeout
+	save current level on death/rearm
+	better info(kills left, max lvl)
+	better score
+	ammo by lvlEvery-killsLeft
+0.4a
+	set players hostile
+	empty vehicles on remote server
+0.5a
+	ai units rebalance (early jets, everything nerfed mostly)
+	optimization
+	rearm action via action menu removed
+0.6a
+	force units despawn to increase server fps
+	yet another rebalance
+0.6.1a
+	fixed bomb spawn for buzzard
+	fixed 'mission complete' screen
+	
+	
+

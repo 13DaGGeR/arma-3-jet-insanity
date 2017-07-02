@@ -1,0 +1,154 @@
+#include "defines\define.hpp"
+#include "defines\parents.ext"
+
+
+author="13dagger";
+OnLoadName = "Jet insanity";
+OnLoadMission = "Fast and fun jet fight training: fly your jet, kill stuff, gain points, upgrade!";
+loadScreen = "pics\preview.paa";
+overviewPicture = "pics\preview.paa";
+overviewText = "Fast and fun jet fight training: fly your jet, kill stuff, gain points, upgrade!";
+
+briefing = 0;
+class CfgFunctions{
+	class SkipBrf{
+		class scripts{
+			class noBriefing{preInit=1; file="scripts\skipBriefing.sqf"};
+		};
+	};
+};
+
+respawn = "BASE";
+respawnDelay = 1;
+respawnTemplates[] = {"Counter"};
+respawnButton = 1;
+RespawnDialog = 0;
+
+disabledAI = 1;
+
+wreckManagerMode=1;
+wreckLimit=15;
+wreckRemovalMinTime=10;
+wreckRemovalMaxTime=30;
+
+class Header{
+	gameType = DM; //https://community.bistudio.com/wiki/Multiplayer_Game_Types
+	minPlayers = 1;
+	maxPlayers = 4;
+};
+
+
+//Dialogs
+class Score{
+	movingEnable = 1;
+	idd = 781;
+	controls[]={ScoreList};
+	controlsBackground[]={ScoreBG};
+	class ScoreList:RscListNBox{
+		idc = 782;
+		w = 0.6;
+		h = 0.3;
+		x = safeZoneX + safeZoneW/2 - 0.3;
+		y = safeZoneY + safeZoneH/2 - 0.15;
+		columns[] = {0.01, 0.65, 0.8};
+		colorBackground[] = {0, 0, 0, 1};
+		class ListScrollBar : ScrollBar {}
+	};
+	class ScoreBG:StructuredText{
+		w = 0.62;
+		h = 0.32;
+		x = safeZoneX + safeZoneW/2 - 0.31;
+		y = safeZoneY + safeZoneH/2 - 0.16;
+	};
+};
+
+//Titles
+class RscTitles{
+	class InfoBoard{
+		idd = -1;
+		onLoad = "uiNamespace setVariable [""TAG_InfoBoard"", _this select 0]";
+		duration = 9999999999;
+		controls[]= {MainBack,FragOmaticFrame,FragOmatic,Sign,FPS};
+		class MainBack:StructuredText{
+			idc = 700;
+			w = 0.2;
+			h = 0.15;
+			x = safeZoneX + safeZoneW - 0.2;
+			y = safeZoneY + safeZoneH - 0.15;
+		};
+		class Sign:StructuredText{
+			idc = 730;
+			w = 0.25;
+			h = 0.03;
+			x = safeZoneX + safeZoneW - 0.45;
+			y = safeZoneY + safeZoneH - 0.03;
+			colorBackground[] = {0,0,0,0.01};
+			text="Jet Insanity by 13dagger";
+		};
+		class FragOmatic{
+			idc = 800;
+			x = safeZoneX + 0.003;
+			y = safeZoneY + safeZoneH - 0.211;
+			w = 0.257;
+			h = 0.21;
+			type = CT_STATIC;
+			style = ST_PICTURE;
+			moving = true;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			sizeEx = 0;
+			font = "PuristaMedium";
+			text = "#(argb,256,256,1)r2t(fragrender,1.0)";
+			//text = "pics\glitches.paa";
+		};
+		class FragOmaticFrame{
+			idc = 850;
+			x = safeZoneX;
+			y = safeZoneY + safeZoneH - 0.23;
+			w = 0.27;
+			h = 0.25;
+			type = CT_STATIC;
+			style = ST_PICTURE;
+			moving = true;
+			colorText[] = {1, 1, 1, 1};
+			colorBackground[] = {0, 0, 0, 0};
+			sizeEx = 1;
+			font = "PuristaMedium";
+			text = "pics\frame.paa";
+		};
+		class FPS:StructuredText{
+			idc = 735;
+			w = 0.2;
+			h = 0.025;
+			x = safeZoneX+0.05;
+			y = safeZoneY;
+			colorBackground[] = {0,0,0,0.01};
+		};
+	};
+};
+
+
+
+class CfgSounds{
+	sounds[]={lvlup};
+	class lvlup{
+		name = "lvlup";
+		sound[] = {"\sound\lvlUp.ogg", 1, 1.0};
+		titles[] = {0, ""};
+	};
+	class f1{
+		name = "f1";
+		sound[] = {"\sound\f1.ogg", 1, 1.0};
+		titles[] = {0, ""};
+	};
+	class f2{
+		name = "f2";
+		sound[] = {"\sound\f2.ogg", 1, 1.0};
+		titles[] = {0, ""};
+	};
+	class f3{
+		name = "f3";
+		sound[] = {"\sound\f3.ogg", 1, 1.0};
+		titles[] = {0, ""};
+	};
+};
